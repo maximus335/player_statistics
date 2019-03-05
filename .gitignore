@@ -1,0 +1,3 @@
+# Infrastructure
+.vagrant
+cm/provisioning/roles
