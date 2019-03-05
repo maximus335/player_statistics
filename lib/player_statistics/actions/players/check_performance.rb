@@ -28,11 +28,10 @@ module PlayerStatistics
           check_player!(args[0])
           result =
             Player.find_by_sql([SQL_QUERY, args[0], args[1]]).first
-          case result
-          when nil
-            puts 'The player has not achieved performance'
-          else
+          if result
             puts 'The player has achieved performance'
+          else
+            puts 'The player has not achieved performance'
           end
         rescue => e
           puts "ERROR: #{e.class}: #{e.message}"

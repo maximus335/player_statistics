@@ -11,8 +11,6 @@ module PlayerStatistics
         # top 5 players for a specific indicator in a particular team
         # and for all teams in general
         def top_five(args)
-          puts args[0]
-          puts args[1]
           top = Player
                 .select('players.id, players.name')
                 .joins(:performances)

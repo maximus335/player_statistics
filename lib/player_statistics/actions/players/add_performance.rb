@@ -23,11 +23,10 @@ module PlayerStatistics
         # Notes that a player has performed an indicator in a match
         def add_performance(args)
           player = Player.find_by_sql([SQL_QUERY, args[0]]).first
-          case player
-          when nil
-            puts 'The player does not exist or doesn\'t play in the current game'
-          else
+          if player
             create_performance(player, args[1])
+          else
+            puts 'The player does not exist or doesn\'t play in the current game'
           end
         rescue => e
           puts "ERROR: #{e.class}: #{e.message}"
