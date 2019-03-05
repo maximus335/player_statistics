@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+# Launching of IRB
+
+require_relative '../lib/application.rb'
+
+require 'irb'
+require 'irb/completion'
+
+begin
+  require 'awesome_print'
+rescue LoadError
+  nil
+end
+
+IRB.start
