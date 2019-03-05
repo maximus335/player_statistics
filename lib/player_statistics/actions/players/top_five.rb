@@ -29,17 +29,13 @@ module PlayerStatistics
         private
 
         def command_condition(command_id)
-          case command_id
-          when nil
-            []
-          else
-            ['players.command_id = ?', command_id]
-          end
+          return [] unless command_id
+          ['players.command_id = ?', command_id]
         end
 
         def prepare_answer(top)
-          top.reduce('') do |memo, player|
-            memo + "1. #{player.name} \n"
+          top.each_with_index.reduce('') do |memo, (player, i)|
+            memo + "#{i + 1}. #{player.name} \n"
           end
         end
       end
